@@ -83,3 +83,20 @@ void drawQuad(uint32_t* pixelBuffer, vector2 p1, vector2 p2, vector2 p3, vector2
     drawLine(pixelBuffer, p2, p4, colour);
     return;
 }
+
+void drawFilledRect(uint32_t* pixelBuffer, vector2 p1, vector2 p2, uint32_t colour){
+    if(p1.x == p2.x || p1.y == p2.y) return;
+    if(p1.y < p2.y) swapVector2(&p1, &p2);
+
+    vector2 draw1, draw2;
+    *(&draw1) = *(&p1);
+    draw2.y = p1.y;
+    draw2.x = p2.x;
+
+    for(int k = 0; k < p1.y - p2.y; k++){
+        draw1.y += 1;
+        draw2.y += 1;
+        drawLine(pixelBuffer, draw1, draw2, colour);
+    }
+    return;
+}

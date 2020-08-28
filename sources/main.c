@@ -21,11 +21,13 @@ int main(){
         return 0;
     }
     vector2 position;
-    position.x = WIDTH/2;
-    position.y = HEIGHT/2;
+    initVec2(&position, WIDTH/2, HEIGHT/2);
     vector2 origin;
-    origin.x = WIDTH/2;
-    origin.y = HEIGHT/2;
+    initVec2(&origin, WIDTH/2, HEIGHT/2);
+
+    vector2 test, test2;
+    initVec2(&test, 50, 50);
+    initVec2(&test2, 80, 130);
 
     while(1){
 
@@ -55,7 +57,7 @@ int main(){
         drawCircle(pixels, position, 20, RED);
         drawLine(pixels, position, origin, GREEN);
         drawRectangle(pixels, position, origin, WHITE);
-
+        drawFilledRect(pixels, test, test2, WHITE);
 
         //screen update
         SDL_UpdateTexture(screen, NULL, pixels, WIDTH * sizeof(uint32_t));

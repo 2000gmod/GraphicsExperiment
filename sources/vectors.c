@@ -17,3 +17,9 @@ void swapVector3(vector3* a, vector3* b){
     free(temp);
     return;
 }
+
+void initVec2(vector2* in, int x, int y){
+    in->x = x;
+    in->y = y;
+    return;
+}
