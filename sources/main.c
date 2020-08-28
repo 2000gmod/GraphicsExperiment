@@ -6,6 +6,7 @@
 #include "rendering.h"
 #include "vectors.h"
 #include "shading.h"
+#include "pong.h"
 
 
 SDL_Window* window;
@@ -20,14 +21,12 @@ int main(){
     if(initSDL() > 0){
         return 0;
     }
-    vector2 position;
-    initVec2(&position, WIDTH/2, HEIGHT/2);
-    vector2 origin;
+    vector2 playerPosition, enemyPosition, ballPosition, ballSpeed, origin;
+    initVec2(&playerPosition, WIDTH - 100, HEIGHT/2);
+    initVec2(&enemyPosition, 100, HEIGHT/2);
+    initVec2(&ballPosition, WIDTH/2, HEIGHT/2);
+    initVec2(&ballSpeed, 10, -6);
     initVec2(&origin, WIDTH/2, HEIGHT/2);
-
-    vector2 test, test2;
-    initVec2(&test, 50, 50);
-    initVec2(&test2, 80, 130);
 
     while(1){
 
@@ -37,27 +36,26 @@ int main(){
         if(state[SDL_SCANCODE_ESCAPE]) break;
 
         if(state[SDL_SCANCODE_UP]){
-            position.y -= 1;
+            playerPosition.y -= 1;
         }
         if(state[SDL_SCANCODE_DOWN]){
-            position.y += 1;
+            playerPosition.y += 1;
         }
         if(state[SDL_SCANCODE_LEFT]){
-            position.x -= 1;
+            //playerPosition.x -= 1;
         }
         if(state[SDL_SCANCODE_RIGHT]){
-            position.x += 1;
+            //playerPosition.x += 1;
         }
         if(state[SDL_SCANCODE_R]){
-            position.x = WIDTH/2;
-            position.y = HEIGHT/2;
+            //playerPosition.x = WIDTH/2;
+            //playerPosition.y = HEIGHT/2;
         }
 
         clearScreen(pixels);
-        drawCircle(pixels, position, 20, RED);
-        drawLine(pixels, position, origin, GREEN);
-        drawRectangle(pixels, position, origin, WHITE);
-        drawFilledRect(pixels, test, test2, WHITE);
+        drawCircle(pixels, playerPosition, 20, RED);
+        drawLine(pixels, playerPosition, origin, GREEN);
+        drawRectangle(pixels, playerPosition, origin, WHITE);
 
         //screen update
         SDL_UpdateTexture(screen, NULL, pixels, WIDTH * sizeof(uint32_t));

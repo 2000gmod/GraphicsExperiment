@@ -23,3 +23,8 @@ void initVec2(vector2* in, int x, int y){
     in->y = y;
     return;
 }
+
+void vec2CopyAToB(vector2* a, vector2* b){
+    *b = *a;
+    return;
+}
