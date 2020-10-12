@@ -15,6 +15,10 @@
 #define GREEN 0x00FF00FF
 #define BLUE 0x0000FFFF
 
+#define CYAN 0x00FFFFFF
+#define MAGENTA 0xFF00FFFF
+#define YELLOW 0xFFFF00FF
+
 
 void clearScreen(uint32_t* pixelBuffer);
 void drawPixel(uint32_t* pixelBuffer, vector2 pos, uint32_t colour);

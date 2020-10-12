@@ -21,12 +21,6 @@ int main(){
     if(initSDL() > 0){
         return 0;
     }
-    vector2 playerPosition, enemyPosition, ballPosition, ballSpeed, origin;
-    initVec2(&playerPosition, WIDTH - 100, HEIGHT/2);
-    initVec2(&enemyPosition, 100, HEIGHT/2);
-    initVec2(&ballPosition, WIDTH/2, HEIGHT/2);
-    initVec2(&ballSpeed, 10, -6);
-    initVec2(&origin, WIDTH/2, HEIGHT/2);
 
     while(1){
 
@@ -36,26 +30,17 @@ int main(){
         if(state[SDL_SCANCODE_ESCAPE]) break;
 
         if(state[SDL_SCANCODE_UP]){
-            playerPosition.y -= 1;
         }
         if(state[SDL_SCANCODE_DOWN]){
-            playerPosition.y += 1;
         }
         if(state[SDL_SCANCODE_LEFT]){
-            //playerPosition.x -= 1;
         }
         if(state[SDL_SCANCODE_RIGHT]){
-            //playerPosition.x += 1;
         }
         if(state[SDL_SCANCODE_R]){
-            //playerPosition.x = WIDTH/2;
-            //playerPosition.y = HEIGHT/2;
         }
 
         clearScreen(pixels);
-        drawCircle(pixels, playerPosition, 20, RED);
-        drawLine(pixels, playerPosition, origin, GREEN);
-        drawRectangle(pixels, playerPosition, origin, WHITE);
 
         //screen update
         SDL_UpdateTexture(screen, NULL, pixels, WIDTH * sizeof(uint32_t));
@@ -63,7 +48,7 @@ int main(){
         SDL_RenderCopy(renderer, screen, NULL, NULL);
         SDL_RenderPresent(renderer);
 
-        SDL_Delay(5);
+        SDL_Delay(15);
     }
 
     free(pixels);
@@ -80,6 +65,7 @@ int initSDL(){
     }
 
     SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, SDL_WINDOW_SHOWN, &window, &renderer);
+    SDL_SetWindowTitle(window, "Gametest");
     screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
     pixels = (uint32_t*) malloc(WIDTH * HEIGHT * sizeof(uint32_t));
 
