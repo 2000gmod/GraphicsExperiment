@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +14,7 @@ SDL_Window* window;
 SDL_Renderer* renderer;
 SDL_Texture* screen;
 
+
 uint32_t* pixels = NULL;
 
 int initSDL();
@@ -21,14 +23,16 @@ int main(){
     if(initSDL() > 0){
         return 0;
     }
-
+    TTF_Init();
+    TTF_Font *font = TTF_OpenFont("./Roboto-Regular.ttf", 10);
     while(1){
 
         SDL_PumpEvents();
         const Uint8 *state = SDL_GetKeyboardState(NULL);
 
+        
         if(state[SDL_SCANCODE_ESCAPE]) break;
-
+        /*
         if(state[SDL_SCANCODE_UP]){
         }
         if(state[SDL_SCANCODE_DOWN]){
@@ -39,7 +43,7 @@ int main(){
         }
         if(state[SDL_SCANCODE_R]){
         }
-
+        */
         clearScreen(pixels);
 
         //screen update

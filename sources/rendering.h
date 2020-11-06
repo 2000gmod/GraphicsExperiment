@@ -31,4 +31,6 @@ void drawQuad(uint32_t* pixelBuffer, vector2 p1, vector2 p2, vector2 p3, vector2
 
 void drawFilledRect(uint32_t* pixelBuffer, vector2 p1, vector2 p2, uint32_t colour);
 
+void drawGrid(uint32_t* pixelBuffer, uint32_t colorThick, uint32_t colorThin, int thickLines, int thinLinesPerThick);
+
 #endif

@@ -100,3 +100,12 @@ void drawFilledRect(uint32_t* pixelBuffer, vector2 p1, vector2 p2, uint32_t colo
     }
     return;
 }
+/*
+void drawGrid(uint32_t* pixelBuffer, uint32_t colorThick, uint32_t colorThin, int thickLines, int thinLinesPerThick){
+    vector2 horLeft, horRight, verUp, verDown;
+    float thickSpacing = (float) WIDTH / thickLines; 
+    for(int k = 0; k < thickLines/2; k++){
+
+    }
+}
+*/
